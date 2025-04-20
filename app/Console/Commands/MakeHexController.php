@@ -8,16 +8,17 @@ use Illuminate\Support\Str;
 
 class MakeHexController extends Command
 {
-    // Cambia el nombre del comando aquí
-    protected $signature = 'app:make-hex-c {module} {name}';
-    protected $description = 'Crea un controlador en src/{module}/Infrastructure/Http/Controllers';
+    protected $signature = 'app:make-hex {module} {path} {name}';
+    protected $description = 'Crea un controlador en src/{module}/{path}/{name}.php';
 
     public function handle()
     {
-        $module = Str::studly($this->argument('module'));
-        $name = Str::studly($this->argument('name'));
+        $module = Str::studly($this->argument('module')); // Auth
+        $path = trim($this->argument('path'), '/');       // Http/Login
+        $name = Str::studly($this->argument('name'));     // LoginController
 
-        $basePath = base_path("src/{$module}/Infrastructure/Http/Controllers");
+        $relativePath = str_replace('/', DIRECTORY_SEPARATOR, $path); // para carpeta
+        $basePath = base_path("src/{$module}/{$relativePath}");
         $filePath = "{$basePath}/{$name}.php";
 
         if (File::exists($filePath)) {
@@ -27,7 +28,8 @@ class MakeHexController extends Command
 
         File::ensureDirectoryExists($basePath);
 
-        $namespace = "Src\\{$module}\\Infrastructure\\Http\\Controllers";
+        $namespacePath = str_replace('/', '\\', $path); 
+        $namespace = "Src\\{$module}\\{$namespacePath}";
 
         $stub = <<<PHP
 <?php
