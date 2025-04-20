@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Domain\Auth\Contracts\AuthService;
-use App\Infrastructure\Auth\LaravelAuthService;
+use Src\Auth\Domain\Interfaces\LoginInterface;
+use Src\Auth\Infrastructure\Services\LoginService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
-        $this->app->bind(AuthService::class, LaravelAuthService::class);
+        $this->app->bind(LoginInterface::class, LoginService::class);
 
     }
 
