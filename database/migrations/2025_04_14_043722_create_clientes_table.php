@@ -28,6 +28,9 @@ return new class extends Migration
             $table->string('municipio')->nullable();
             $table->string('estado')->nullable();
             $table->string('pais')->default('México');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         
             $table->timestamps();
         });
