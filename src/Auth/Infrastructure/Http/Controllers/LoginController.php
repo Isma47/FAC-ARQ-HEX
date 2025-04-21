@@ -37,7 +37,7 @@ class LoginController extends Controller
 
 
         if (!$user) {
-            return redirect()->back()->withErrors(['auth' => 'Invalid credentials']);
+            return redirect()->back()->withInput()->withErrors(['auth' => 'Credenciales inválidas']);
         }
 
         return redirect()->route('client.home')->with('success', 'Login successful');
