@@ -1,3 +1,11 @@
 @extends('client.layout.main')
 
-<h1>En el home {{ auth()->user()->name }}</h1>
+
+@section('title', 'Home')
+
+@section('content')
+    <div class="container">
+        <h1>Welcome to the Home Page</h1>
+        <p>This is the content of the home page.</p>
+    </div>
+@endsection

@@ -33,8 +33,8 @@ return new class extends Migration
             // Simulación de timbrado
             $table->uuid('uuid_simulado')->nullable();
             $table->string('estatus')->default('pendiente'); // pendiente, timbrada, cancelada
-            $table->string('xml_path')->nullable(); // Ruta del archivo XML generado
-            $table->string('pdf_path')->nullable(); // Ruta del archivo PDF generado
+            $table->string('xml_path')->nullable();
+            $table->string('pdf_path')->nullable(); 
         
             $table->timestamps();
         });

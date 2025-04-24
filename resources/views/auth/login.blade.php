@@ -3,7 +3,7 @@
 
 @section('content')
 
-<main class="flex w-full ">
+<main class="flex w-full">
 
     @include('auth.sections.formLogin')
 
