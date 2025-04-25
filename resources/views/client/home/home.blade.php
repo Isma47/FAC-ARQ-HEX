@@ -5,7 +5,14 @@
 
 @section('content')
     <div class="container">
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the content of the home page.</p>
+    
+        @include('client.home.sections.graphics')
+
+
+        <div class="grid grid-cols-4 gap-6 mt-6">
+            @include('client.home.sections.invoices')
+            @include('client.home.sections.client')
+        </div>
+
     </div>
 @endsection

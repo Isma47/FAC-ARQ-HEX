@@ -11,10 +11,10 @@
 <body class="w-screen h-screen overflow-hidden bg-[#F9F9F9]">
    
 
-<div class="flex gap-8">
+<div class="flex gap-6">
     @include('client.layout.header')
 
-    <div class="w-10/12">
+    <div class="w-10/12 h-screen">
         @yield('content')
     </div>
 </div>
